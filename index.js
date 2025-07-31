@@ -1,12 +1,13 @@
+import dotenv from "dotenv";
+dotenv.config();
+
 import express from "express";
 import pkg from "pg";
 import multer from "multer";
 import path from "path";
 import { engine } from "express-handlebars";
-import dotenv from "dotenv";
-dotenv.config();
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT ?? 8080;
 const { Pool } = pkg;
 const app = express();
 
