@@ -4,11 +4,11 @@ import multer from "multer";
 import path from "path";
 import { engine } from "express-handlebars";
 import dotenv from "dotenv";
+dotenv.config();
 
+const port = process.env.PORT || 3000;
 const { Pool } = pkg;
 const app = express();
-const port = process.env.PORT;
-dotenv.config();
 
 
 const pool = new Pool({
@@ -46,7 +46,7 @@ app.use(express.json());
 app.use(express.static("public/image"));
 app.use(express.static("public/script"));
 app.use("/uploads", express.static("public/uploads"));
-
+  
 
 app.engine("handlebars", engine());
 app.set("view engine", "handlebars");
