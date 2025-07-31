@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ferdi Alfiansah</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script>
+    tailwind.config = {
+        darkMode: 'class',
+        theme: {
+            extend: {
+                fontFamily: {
+                    sans: ['Poppins', 'sans-serif'],
+                },
+                animation: {
+                    'float': 'float 0.3s ease-out forwards',
+                    'click': 'click 0.15s ease-out forwards',
+                },
+                keyframes: {
+                    float: {
+                        '0%': { transform: 'translateY(0)' },
+                        '100%': { transform: 'translateY(-8px)' }
+                    },
+                    click: {
+                        '0%': { transform: 'translateY(-8px) scale(1)' },
+                        '100%': { transform: 'translateY(-12px) scale(0.98)' }
+                    }
+                }
+            }
+        }
+    }
+</script>
+</head>
+<body class="bg-white dark:bg-gray-900 transition-colors duration-300 min-h-screen">
+    <!-- Preloader di paling atas -->
+    <div id="preloader" class="fixed inset-0 bg-white dark:bg-gray-900 z-50 flex items-center justify-center">
+      <div class="animate-spin rounded-full h-12 w-12 border-t-4 border-gray-500 border-solid"></div>
+    </div>
+    <div class="bg-white dark:bg-gray-900 transition-colors duration-300 min-h-screen">
+        <nav class="fixed top-0 left-0 w-full z-50 bg-white dark:bg-gray-900 dark:border-gray-700 transition-colors duration-300">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between items-center h-16">
+                    <a href="/" class="group">
+                        <img src="logo.svg" alt="Company Logo" class="h-8 w-auto">
+                    </a>
+                    <div class="hidden md:flex items-center space-x-4">
+                        <a href="#tech" class="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white text-sm font-medium transition-colors duration-200">
+                            Tech Stack
+                        </a>
+                        <a href="#experience" class="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white text-sm font-medium transition-colors duration-200">
+                            Experience
+                        </a>
+                        <a href="#projects" class="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white text-sm font-medium transition-colors duration-200">
+                            Projects
+                        </a>
+                        <a href="https://wa.me/6289517056813" target="_blank">
+                            <div class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg text-sm font-medium flex items-center space-x-2 transition-colors duration-200">
+                                <img src="whatsapp.png" alt="WhatsApp Icon" class="w-6 h-6 mr-2">Let's Talk
+                            </div>
+                        </a>
+                        <a href="https://drive.google.com/file/d/1SAZlTW118SPEX7ZWNRawfQFPUYr1bpIp/view?usp=sharing" class="bg-black dark:bg-gray-700 hover:bg-gray-800 dark:hover:bg-gray-600 text-white px-4 py-2 rounded-lg text-sm font-medium flex items-center space-x-2 transition-colors duration-200">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                            </svg>
+                            <span>Download CV</span>
+                        </a>
+                        <button id="darkModeToggle" class="p-2 rounded-lg text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-200">
+                            <svg class="w-5 h-5 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                            </svg>
+                            <svg class="w-5 h-5 block dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                            </svg>
+                        </button>
+                    </div>
+
+                    <div class="md:hidden flex items-center space-x-2">
+                        <button id="mobileDarkModeToggle" class="p-2 rounded-lg text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-200">
+                            <svg class="w-5 h-5 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                            </svg>
+                            <svg class="w-5 h-5 block dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                            </svg>
+                        </button>
+                        <button id="mobileMenuToggle" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-300 transition-colors duration-200">
+                            <svg id="hamburgerIcon" class="h-6 w-6 block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                            </svg>
+                            <svg id="closeIcon" class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <div id="mobileMenu" class="fixed top-0 right-0 h-full w-64 z-50 bg-white dark:bg-gray-600 border-l border-gray-200 dark:border-gray-700 transform transition-transform duration-300 md:hidden translate-x-full">
+            <button id="closeMobileMenu" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 p-2 rounded transition-colors duration-200" aria-label="Close menu">
+                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                </svg>
+            </button>
+            <div class="px-2 pt-16 pb-3 space-y-1 sm:px-3">
+                <a href="#tech" class="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white block px-3 py-2 text-base font-medium transition-colors duration-200">
+                    Tech Stack
+                </a>
+                <a href="#experience" class="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white block px-3 py-2 text-base font-medium transition-colors duration-200">
+                    Experience
+                </a>
+                <a href="#projects" class="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white block px-3 py-2 text-base font-medium transition-colors duration-200">
+                    Projects
+                </a>
+                <div class="pt-4 pb-3 dark:border-gray-700">
+                    <div class="space-y-2">
+                        <a href="https://drive.google.com/file/d/1SAZlTW118SPEX7ZWNRawfQFPUYr1bpIp/view?usp=sharing" class="w-full bg-black dark:bg-gray-100 text-white dark:text-gray-900 hover:bg-gray-700 dark:hover:bg-gray-600 px-5 py-2 rounded-2xl text-sm font-medium flex items-center justify-center space-x-2 transition-colors duration-200">
+                            Download CV
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden md:hidden transition-opacity duration-300"></div>
+
+        <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+          <section class="mt-30 px-4 sm:px-6 ">
+            <div class="max-w-6xl mx-auto ml-16">
+                <div class="flex flex-col lg:flex-row items-center justify-center lg:items-start gap-8 lg:gap-24 mb-32">
+                  <div class="order-1 lg:order-1 flex-shrink-0 flex justify-center">
+                      <div class="relative flex justify-center items-center mt-16 cursor-pointer transition-all duration-300 ease-out hover:-translate-y-2 active:-translate-y-3 active:scale-95">
+                          <div class="absolute inset-0 bg-gradient-to-r from-purple-500 via-pink-500 to-blue-500 rounded-3xl blur-md opacity-80 transition-all duration-300 hover:blur-md hover:opacity-100 shadow-lg"></div>
+                          <div class="relative transition-all duration-300 hover:shadow-xl z-10 bg-white rounded-3xl">
+                              <img src="pas foto.jpg" 
+                                  alt="Profile Photo" 
+                                  class="w-64 h-64 sm:w-72 sm:h-72 object-cover object-center rounded-2xl shadow-md">
+                          </div>
+                      </div>
+                  </div>
+                    <div class="order-2 lg:order-2 flex-1 text-center lg:text-left lg:pt-8 max-w-full lg:max-w-none">
+                        <h1 class="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-900 dark:text-white mb-4 leading-tight">
+                            Hi, I'm Ferdi
+                            <span class="inline-block ml-2">
+                                <span class="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl">👋</span>
+                            </span>
+                        </h1>
+                        <h2 class="text-lg sm:text-xl lg:text-2xl text-gray-600 dark:text-gray-300 leading-relaxed mb-6 sm:mb-8 max-w-full lg:max-w-2xl mx-auto lg:mx-0">
+                            Software Engineer 
+                        </h2>
+                        <p class="text-medium  sm:text-xl text-gray-700 dark:text-gray-300 leading-relaxed mb-6 sm:mb-8 max-w-full lg:max-w-2xl mx-auto lg:mx-0">
+                           I love turning ideas into vibrant digital products. From initial sketches to smooth running apps, I handle everything from frontend, backend, to launch and maintenance.
+                            Creating end-to-end solutions is not only my job, but also my passion.
+                        </p>
+                        <div class="flex items-center justify-center lg:justify-start text-gray-600 dark:text-gray-400 mb-2 text-sm sm:text-base">
+                            <svg class="w-4 h-4 sm:w-5 sm:h-5 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                            </svg>
+                            <span>Bogor, Jonggol, Indonesia</span>
+                        </div>
+                        <div class="flex items-center justify-center lg:justify-start text-green-600 dark:text-green-400 mb-6 sm:mb-8 text-sm sm:text-base">
+                            <div class="w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse"></div>
+                            <span>Available for new Projects</span>
+                        </div>
+                        <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start text-center sm:text-left max-w-sm sm:max-w-none mx-auto sm:mx-0">
+                            <a href="https://wa.me/6289517056813" target="_blank" class="flex-1 sm:flex-none">
+                                <div class="bg-green-500 hover:bg-green-600 text-white px-4 sm:px-6 py-3 rounded-lg text-sm font-medium flex items-center justify-center space-x-2 transition-colors duration-200 w-full">
+                                    <img src="whatsapp.png" alt="WhatsApp Icon" class="w-5 h-5 sm:w-6 sm:h-6" />
+                                    <span>Let's Talk</span>
+                                </div>
+                            </a>
+                            <a href="https://drive.google.com/file/d/1SAZlTW118SPEX7ZWNRawfQFPUYr1bpIp/view?usp=sharing" class="flex-1 sm:flex-none">
+                                <div class="bg-black dark:bg-gray-700 hover:bg-gray-800 dark:hover:bg-gray-600 text-white px-4 sm:px-6 py-3 rounded-lg text-sm font-medium flex items-center justify-center space-x-2 transition-colors duration-200 w-full">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                                    </svg>
+                                    <span>Download CV</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+            <div class="py-16" id="tech">
+              <h2 class="text-3xl font-bold mb-10 text-gray-900 dark:text-white">Tech Stack - Tools I Use Everyday</h2>
+              <div class="overflow-hidden relative flex justify-center items-center gap-8">
+                <div class="flex gap-12 items-center scroll-left w-max">
+                  <div class="swiper-slide flex flex-col items-center">
+                    <div class="h-20 w-20 flex items-center justify-center bg-white-700 dark:bg-gray-800 shadow-xl rounded-xl ">
+                      <img src="express.png" alt="Express.js icon" class="h-14 opacity-70" />
+                    </div>
+                    <p class="mt-2 text-sm text-gray-700 dark:text-gray-300">Express.js</p>
+                  </div>
+                  <div class="swiper-slide flex flex-col items-center">
+                    <div class="h-20 w-20 flex items-center justify-center bg-white-700 dark:bg-gray-800 shadow-xl rounded-xl ">
+                      <img src="javascript.png" alt="JavaScript icon" class="h-14" />
+                    </div>
+                    <p class="mt-2 text-sm text-gray-700 dark:text-gray-300">JavaScript</p>
+                  </div>
+
+                  <div class="swiper-slide flex flex-col items-center">
+                    <div class="h-20 w-20 flex items-center justify-center bg-white-700 dark:bg-gray-800 shadow-xl rounded-xl ">
+                      <img src="postgre.png" alt="PostgreSQL icon" class="h-14" />
+                    </div>
+                    <p class="mt-2 text-sm text-gray-700 dark:text-gray-300">PostgreSQL</p>
+                  </div>
+                  <div class="swiper-slide flex flex-col items-center">
+                    <div class="h-20 w-20 flex items-center justify-center bg-white-700 dark:bg-gray-800 shadow-xl rounded-xl ">
+                      <img src="tailwind.png" alt="Tailwind CSS icon" class="h-14" />
+                    </div>
+                    <p class="mt-2 text-sm text-gray-700 dark:text-gray-300">Tailwind CSS</p>
+                  </div>
+                  <div class="swiper-slide flex flex-col items-center">
+                    <div class="h-20 w-20 flex items-center justify-center bg-white-700 dark:bg-gray-800 shadow-xl rounded-xl ">
+                      <img src="react.png" alt="React icon" class="h-14" />
+                    </div>
+                    <p class="mt-2 text-sm text-gray-700 dark:text-gray-300">React</p>
+                  </div>
+                  <div class="swiper-slide flex flex-col items-center">
+                    <div class="h-20 w-20 flex items-center justify-center bg-white-700 dark:bg-gray-800 shadow-xl rounded-xl ">
+                      <img src="node.png" alt="Node.js icon" class="h-14" />
+                    </div>
+                    <p class="mt-2 text-sm text-gray-700 dark:text-gray-300">Node.js</p>
+                  </div>
+                  <div class="swiper-slide flex flex-col items-center">
+                    <div class="h-20 w-20 flex items-center justify-center bg-white-700 dark:bg-gray-800 shadow-xl rounded-xl ">
+                      <img src="bootstrap.jpg" alt="Bootstrap icon" class="h-14" />
+                    </div>
+                    <p class="mt-2 text-sm text-gray-700 dark:text-gray-300">Bootstrap</p>
+                  </div>
+                  <div class="swiper-slide flex flex-col items-center">
+                    <div class="h-20 w-20 flex items-center justify-center bg-white-700 dark:bg-gray-800 shadow-xl rounded-xl ">
+                      <img src="phpjpg.jpg" alt="PHP icon" class="h-14" />
+                    </div>
+                    <p class="mt-2 text-sm text-gray-700 dark:text-gray-300">PHP</p>
+                  </div>
+                  <div class="swiper-slide flex flex-col items-center">
+                    <div class="h-20 w-20 flex items-center justify-center bg-white-700 dark:bg-gray-800 shadow-xl rounded-xl ">
+                      <img src="laravel.jpg" alt="Laravel icon" class="h-14" />
+                    </div>
+                    <p class="mt-2 text-sm text-gray-700 dark:text-gray-300">Laravel</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <section class="py-10" id="experience">
+              <h2 class="text-2xl sm:text-3xl font-bold mb-6 text-gray-900 dark:text-white">Work Experiences:</h2>
+              {{#each experiences}}
+              <div class="bg-white dark:bg-gray-800 rounded-xl shadow p-6 border border-gray-100 dark:border-gray-700 mt-6">
+                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                  <div class="flex items-start gap-4">
+                    <img src="{{logo}}" alt="Logo" class="w-12 h-12 object-contain mt-1">
+                    <div>
+                      <h3 class="font-semibold text-lg text-gray-900 dark:text-white">{{position}}</h3>
+                      <p class="text-green-600 text-sm mb-2">{{location}}</p>
+                      <ul class="list-disc list-inside text-sm text-gray-700 dark:text-gray-300 space-y-1">
+                        {{#each description}}
+                          <li>{{this}}</li>
+                        {{/each}}
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="text-sm text-gray-500 whitespace-nowrap">
+                    {{start_date}} - {{end_date}}
+                  </div>
+                </div>
+                <div class="flex flex-wrap gap-2 mt-4">
+                  {{#each technologies}}
+                    <span class="bg-gray-100 dark:bg-gray-700 text-sm px-3 py-1 rounded-full text-gray-800 dark:text-gray-200">{{this}}</span>
+                  {{/each}}
+                </div>
+              </div>
+              {{/each}}
+            </section>
+
+            <section class="py-10 px-4 md:px-8" id="projects">
+              <h2 class="text-2xl sm:text-3xl font-bold mb-6 text-gray-900 dark:text-white">
+                My Projects:
+              </h2>
+
+              {{!-- card --}}
+             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {{#each projects}}
+                  <div class="bg-white dark:bg-gray-800 rounded-xl shadow border border-gray-200 dark:border-gray-700 overflow-hidden">
+                    <img src="{{image_url}}" alt="{{project_name}}" class="w-full h-64 object-cover rounded mb-4">
+                    <div class="p-6">
+                      <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">{{this.project_name}}</h3>
+                      <p class="text-sm text-gray-700 dark:text-gray-300 mb-4">
+                        {{this.description}}
+                      </p>
+                      <div class="flex flex-wrap gap-2 mb-4">
+                        {{#each this.technologies}}
+                        <span class="px-3 py-1 text-sm rounded-full bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200">
+                          {{this}}
+                        </span>
+                        {{/each}}
+                      </div>
+                      <div class="flex items-center gap-4 text-sm text-gray-600 dark:text-gray-400">
+                        <div class="flex items-center gap-1">
+                          <i class="fa-solid fa-lock"></i>
+                          <a href="{{github}}" class="text-gray-600 hover:text-gray-800">Public Repository</a> 
+                        </div>
+                        <a href="#" class="flex items-center gap-1 text-blue-500 hover:underline">
+                          <i class="fa-solid fa-up-right-from-square"></i> Live Demo
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                {{/each}}
+              </div>
+            </section>
+            <section class="text-center py-12 px-4 mb-24 bg-white dark:bg-gray-900">
+              <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-4">
+                Let's build something together
+              </h2>
+              <p class="text-gray-600 dark:text-gray-300 mb-6 max-w-xl mx-auto">
+                Feel free to reach out if you're looking for a developer, have a question, or just want to connect.
+              </p>
+
+              <div class="flex flex-col sm:flex-row justify-center items-center gap-4 text-gray-700 dark:text-gray-200">
+                <a href="/contact" class="flex items-center gap-2">
+                  <i class="fas fa-envelope text-gray-500"></i>
+                  <span>ferdialfiansah73@gmail.com</span>
+                </a>
+                <span class="hidden sm:inline">|</span>
+              <a href="https://wa.me/6289517056813" target="_blank" class="flex items-center gap-2">
+                <i class="fab fa-whatsapp text-green-500"></i>
+                <span>+62 895‑170‑56813</span>
+              </a>
+              </div>
+            </section>
+            <hr>
+            <footer class="text-center text-sm py-6 px-4 bg-white dark:bg-gray-900 text-gray-500 dark:text-gray-400">
+              <p>
+                © 2025 Coded with 
+                <span class="text-pink-500"></span> by <strong>Ferdi Alfiansah</strong>
+              </p>
+
+              <div class="mt-2 flex justify-center gap-4 text-xl">
+                <a href="https://github.com/ferdi155" target="_blank" class="hover:text-black dark:hover:text-white">
+                  <i class="fab fa-github"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/ferdi-alf/" target="_blank" class="hover:text-blue-700 dark:hover:text-white">
+                  <i class="fab fa-linkedin"></i>
+                </a>
+              </div>
+            </footer>
+        </main>
+    </div>
+    <script src="main.js"></script>
+</body>
+</html>

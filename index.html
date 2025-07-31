@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+    <div class="card">
+        <div class="card-header">
+            <div class="d-flex justify-content-between align-item-center mb-3">
+                <h1>Daftar Barang</h1>
+                <a href="{{route('barang.create')}}" class="btn btn-sm btn-success">Tambah Barang</a>
+            </div>
+        </div>
+        <div class="card-body">
+            <table class="table table-boardered bg-white">
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>NamaBarang</th>
+                        <th>Harga</th>
+                        <th>Stok</th>
+                        <th>Aksi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Kopi</td>
+                            <td>Rp.2500</td>
+                            <td>100</td>
+                            <td>
+                                <a href="{{ route('barang.edit', $barang->id) }}" class="btn btn-sm btn-warning">Edit</a>
+                                <form action="{{ route('barang.destroy', $barang->id) }}" method="POST"
+                                    class="d-inline" onsubmit="return confirm('anda yakin ingin menghapus ini?')"></form>
+                                    <button class="btn btn-danger btn-sm">Hapus</button>
+                                </form>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="5" class="text-center">Tidak ada data barang</td>
+                        </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>
