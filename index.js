@@ -3,21 +3,21 @@ import pkg from "pg";
 import multer from "multer";
 import path from "path";
 import { engine } from "express-handlebars";
-console.log("✅ Aplikasi dimulai...");
 import dotenv from "dotenv";
-dotenv.config();
-console.log("🌐 DATABASE_URL:", process.env.DATABASE_URL);; // ✅ HARUS di atas sebelum Pool digunakan
+
+dotenv.config(); // ✅ HARUS di atas sebelum Pool digunakan
 
 const { Pool } = pkg;
 const app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT;
 
 const pool = new Pool({
+  
   connectionString: process.env.DATABASE_URL,
   ssl: { rejectUnauthorized: false }
 });
 
-// console.log("DATABASE_URL =>", process.env.DATABASE_URL);
+console.log("DATABASE_URL =>", process.env.DATABASE_URL);
 
 process.on("uncaughtException", err => {
   console.error("Uncaught Exception:", err);
