@@ -5,15 +5,15 @@ import path from "path";
 import { engine } from "express-handlebars";
 import dotenv from "dotenv";
 
+dotenv.config(); // ✅ HARUS di atas sebelum Pool digunakan
+
 const { Pool } = pkg;
 const app = express();
-const port = process.env.PORT;
-dotenv.config();
-
+const port = process.env.PORT || 3000;
 
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
-  ssl: { rejectUnauthorized: false } // penting untuk Railway
+  ssl: { rejectUnauthorized: false }
 });
 
 const storage = multer.diskStorage({
