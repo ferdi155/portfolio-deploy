@@ -5,7 +5,10 @@ import path from "path";
 import { engine } from "express-handlebars";
 import dotenv from "dotenv";
 
-dotenv.config(); // ✅ HARUS di atas sebelum Pool digunakan
+dotenv.config(); 
+
+
+console.log("✅ DATABASE_URL dari .env:", process.env.DATABASE_URL);// ✅ HARUS di atas sebelum Pool digunakan
 
 const { Pool } = pkg;
 const app = express();
