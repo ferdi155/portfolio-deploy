@@ -41,6 +41,7 @@
       <div class="animate-spin rounded-full h-12 w-12 border-t-4 border-gray-500 border-solid"></div>
     </div>
     <div class="bg-white dark:bg-gray-900 transition-colors duration-300 min-h-screen">
+       <!-- Navbar -->
         <nav class="fixed top-0 left-0 w-full z-50 bg-white dark:bg-gray-900 dark:border-gray-700 transition-colors duration-300">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex justify-between items-center h-16">
@@ -104,6 +105,7 @@
             </div>
         </nav>
 
+        <!-- Sidebar -->
         <div id="mobileMenu" class="fixed top-0 right-0 h-full w-64 z-50 bg-white dark:bg-gray-600 border-l border-gray-200 dark:border-gray-700 transform transition-transform duration-300 md:hidden translate-x-full">
             <button id="closeMobileMenu" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 p-2 rounded transition-colors duration-200" aria-label="Close menu">
                 <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -131,9 +133,12 @@
         </div>
 
         <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden md:hidden transition-opacity duration-300"></div>
+        <!-- Content Utama -->
 
         <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-          <section class="mt-30 px-4 sm:px-6 ">
+
+          <!-- Profile -->
+          <section class="mt-30 px-4 sm:px-8 ">
             <div class="max-w-6xl mx-auto ml-16">
                 <div class="flex flex-col lg:flex-row items-center justify-center lg:items-start gap-8 lg:gap-24 mb-32">
                   <div class="order-1 lg:order-1 flex-shrink-0 flex justify-center">
@@ -190,6 +195,8 @@
                 </div>
             </div>
         </section>
+
+        <!-- Tools -->
             <div class="py-16" id="tech">
               <h2 class="text-3xl font-bold mb-10 text-gray-900 dark:text-white">Tech Stack - Tools I Use Everyday</h2>
               <div class="overflow-hidden relative flex justify-center items-center gap-8">
@@ -253,6 +260,7 @@
               </div>
             </div>
 
+            <!-- Card Experience -->
             <section class="py-10" id="experience">
               <h2 class="text-2xl sm:text-3xl font-bold mb-6 text-gray-900 dark:text-white">Work Experiences:</h2>
               {{#each experiences}}
@@ -283,6 +291,7 @@
               {{/each}}
             </section>
 
+            <!-- Card Project -->
             <section class="py-10 px-4 md:px-8" id="projects">
               <h2 class="text-2xl sm:text-3xl font-bold mb-6 text-gray-900 dark:text-white">
                 My Projects:
@@ -319,6 +328,8 @@
                 {{/each}}
               </div>
             </section>
+
+            <!-- content -->
             <section class="text-center py-12 px-4 mb-24 bg-white dark:bg-gray-900">
               <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-4">
                 Let's build something together
@@ -339,7 +350,10 @@
               </a>
               </div>
             </section>
-            <hr>
+
+            <hr> 
+
+            <!-- Footer-->
             <footer class="text-center text-sm py-6 px-4 bg-white dark:bg-gray-900 text-gray-500 dark:text-gray-400">
               <p>
                 © 2025 Coded with 

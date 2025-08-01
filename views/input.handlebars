@@ -10,200 +10,202 @@
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
   <body>
-   <div class="container mx-auto p-16 bg-gray-100 shadow-xl rounded-lg">
-    <h1 class="text-center mb-14 text-4xl font-medium">Form Projects</h1>
-      <form action="/formProject" method="POST" enctype="multipart/form-data">
-        <div class="form-group mb-4">
-          <label for="projectName" class="block font-medium mb-2">Project Name</label>
-          <input
-            type="text"
-            id="projectName"
-            name="projectName"
-            required
-            class="w-full border bg-white shadow-xl rounded px-2 py-2 focus:ring-2 focus:ring-gray-500 outline-none"
-          />
-        </div>
-        <div class="form-group mb-4">
-          <label for="description" class="block font-medium mb-2">Description</label>
-          <textarea
-            id="description"
-            name="description"
-            rows="4"
-            required
-            placeholder="Describe your project..."
-            class="w-full border bg-white shadow-xl rounded px-2 py-2 focus:ring-2 focus:ring-gray-500 outline-none resize-none"
-          ></textarea>
-        </div>
-        <div class="form-group mb-4">
-          <label class="block font-medium mb-2">Technologies</label>
-          <div class="grid grid-cols-2 gap-4">
-           <label class="flex items-center gap-2">
-              <input type="checkbox" name="technologies" value="Node.js" />
-              Node.js
-            </label>
-            <label class="flex items-center gap-2">
-              <input type="checkbox" name="technologies" value="bootstrap" />
-              Bootstrap
-            </label>
-            <label class="flex items-center gap-2">
-              <input type="checkbox" name="technologies" value="React.js" />
-              React.js
-            </label>
-            <label class="flex items-center gap-2">
-              <input type="checkbox" name="technologies" value="Laravel" />
-              Laravel
-            </label>
-            <label class="flex items-center gap-2">
-              <input type="checkbox" name="technologies" value="Express.js" />
-              Express.js
-            </label>
-            <label class="flex items-center gap-2">
-              <input type="checkbox" name="technologies" value="Tailwindcss" />
-              Tailwindcss
-            </label>
-            <label class="flex items-center gap-2">
-              <input type="checkbox" name="technologies" value="Php" />
-              PHP
-            </label>
-            <label class="flex items-center gap-2">
-              <input type="checkbox" name="technologies" value="PostgreSQL" />
-              PostgreSQL
-            </label>
-            <label class="flex items-center gap-2">
-              <input type="checkbox" name="technologies" value="Javascript" />
-              Javascript
-            </label>
+    <!-- Form Project -->
+    <div class="container mx-auto p-16 bg-gray-100 shadow-xl rounded-lg">
+      <h1 class="text-center mb-14 text-4xl font-medium">Form Projects</h1>
+        <form action="/formProject" method="POST" enctype="multipart/form-data">
+          <div class="form-group mb-4">
+            <label for="projectName" class="block font-medium mb-2">Project Name</label>
+            <input
+              type="text"
+              id="projectName"
+              name="projectName"
+              required
+              class="w-full border bg-white shadow-xl rounded px-2 py-2 focus:ring-2 focus:ring-gray-500 outline-none"
+            />
           </div>
-        </div>
-        <div class="form-group mb-6">
-          <label for="github" class="block font-medium mb-2">GitHub Link</label>
-          <input
-            type="text"
-            id="github"
-            name="github"
-            placeholder="https://github.com/your-repo"
-            class="w-full border bg-white shadow-xl rounded px-2 py-2 focus:ring-2 focus:ring-gray-500 outline-none"
-          />
-        </div>
-        <div class="form_group mb-6">
-        <label for="image_url" class="block font-medium mb-2">Upload gambar</label>
-        <input type="file" name="image_url" id="image_url" class="w-full border bg-white shadow-xl rounded px-2 py-2 focus::ring-2 focus:ring-gray-500 outline-none">
-        </div>
-        <div class="text-center flex justify-end">
-          <button
-            type="submit"
-            class="bg-gray-700 hover:bg-gray-400 text-white font-bold py-2 px-6 rounded transition">
-            Submit
-          </button>
-        </div>
-      </form>
-      </div>
+          <div class="form-group mb-4">
+            <label for="description" class="block font-medium mb-2">Description</label>
+            <textarea
+              id="description"
+              name="description"
+              rows="4"
+              required
+              placeholder="Describe your project..."
+              class="w-full border bg-white shadow-xl rounded px-2 py-2 focus:ring-2 focus:ring-gray-500 outline-none resize-none"
+            ></textarea>
+          </div>
+          <div class="form-group mb-4">
+            <label class="block font-medium mb-2">Technologies</label>
+            <div class="grid grid-cols-2 gap-4">
+            <label class="flex items-center gap-2">
+                <input type="checkbox" name="technologies" value="Node.js" />
+                Node.js
+              </label>
+              <label class="flex items-center gap-2">
+                <input type="checkbox" name="technologies" value="bootstrap" />
+                Bootstrap
+              </label>
+              <label class="flex items-center gap-2">
+                <input type="checkbox" name="technologies" value="React.js" />
+                React.js
+              </label>
+              <label class="flex items-center gap-2">
+                <input type="checkbox" name="technologies" value="Laravel" />
+                Laravel
+              </label>
+              <label class="flex items-center gap-2">
+                <input type="checkbox" name="technologies" value="Express.js" />
+                Express.js
+              </label>
+              <label class="flex items-center gap-2">
+                <input type="checkbox" name="technologies" value="Tailwindcss" />
+                Tailwindcss
+              </label>
+              <label class="flex items-center gap-2">
+                <input type="checkbox" name="technologies" value="Php" />
+                PHP
+              </label>
+              <label class="flex items-center gap-2">
+                <input type="checkbox" name="technologies" value="PostgreSQL" />
+                PostgreSQL
+              </label>
+              <label class="flex items-center gap-2">
+                <input type="checkbox" name="technologies" value="Javascript" />
+                Javascript
+              </label>
+            </div>
+          </div>
+          <div class="form-group mb-6">
+            <label for="github" class="block font-medium mb-2">GitHub Link</label>
+            <input
+              type="text"
+              id="github"
+              name="github"
+              placeholder="https://github.com/your-repo"
+              class="w-full border bg-white shadow-xl rounded px-2 py-2 focus:ring-2 focus:ring-gray-500 outline-none"
+            />
+          </div>
+          <div class="form_group mb-6">
+          <label for="image_url" class="block font-medium mb-2">Upload gambar</label>
+          <input type="file" name="image_url" id="image_url" class="w-full border bg-white shadow-xl rounded px-2 py-2 focus::ring-2 focus:ring-gray-500 outline-none">
+          </div>
+          <div class="text-center flex justify-end">
+            <button
+              type="submit"
+              class="bg-gray-700 hover:bg-gray-400 text-white font-bold py-2 px-6 rounded transition">
+              Submit
+            </button>
+          </div>
+        </form>
+    </div>
 
+    <!-- Form Experience -->
       <div class="container mx-auto p-16 bg-gray-100 shadow-xl rounded-lg mt-8">
         <h1 class="text-center mb-14 text-4xl font-medium">Form Experience</h1>
-      <form action="/experience" method="POST" enctype="multipart/form-data">
-        <div class="form-group mb-4">
-          <label for="position" class="block font-medium mb-2">Jabatan</label>
-          <input
-            type="text"
-            id="position"
-            name="position"
-            required
-            class="w-full border bg-white shadow-xl rounded px-2 py-2 focus:ring-2 focus:ring-gray-500 outline-none"
-          />
-        </div>
-
-        <div class="form-group mb-4">
-          <label for="location" class="block font-medium mb-2">Nama Perusahaan</label>
-          <input
-            type="text"
-            id="location"
-            name="location"
-            required
-            class="w-full border bg-white shadow-xl rounded px-2 py-2 focus:ring-2 focus:ring-gray-500 outline-none"
-          />
-        </div>
-
-        <div class="form-group mb-4">
-          <label for="description" class="block font-medium mb-2">Description</label>
-          <textarea
-            id="description"
-            name="description"
-            rows="4"
-            required
-            placeholder="Describe your project..."
-            class="w-full border bg-white shadow-xl rounded px-2 py-2 focus:ring-2 focus:ring-gray-500 outline-none resize-none"
-          ></textarea>
-        </div>
-
-         <div class="flex flex-col md:flex-row gap-4">
-            <div class="form-group flex-1">
-                <label for="startDate" class="block font-medium mb-2">Start Date</label>
-                <input type="date" id="startDate" name="startDate" required
-                    class="w-full border border-white bg-white shadow-xl rounded px-2 py-2 focus:ring-2 focus:ring-gray-500 outline-none" />
+          <form action="/experience" method="POST" enctype="multipart/form-data">
+            <div class="form-group mb-4">
+              <label for="position" class="block font-medium mb-2">Jabatan</label>
+              <input
+                type="text"
+                id="position"
+                name="position"
+                required
+                class="w-full border bg-white shadow-xl rounded px-2 py-2 focus:ring-2 focus:ring-gray-500 outline-none"
+              />
             </div>
-            <div class="form-group flex-1">
-                <label for="endDate" class="block font-medium mb-2">End Date</label>
-                <input type="date" id="endDate" name="endDate" required
-                    class="w-full border border-white bg-white shadow-xl rounded px-2 py-2 focus:ring-2 focus:ring-gray-500 outline-none" />
-            </div>
-        </div>
 
-        <div class="form-group mb-4">
-          <label class="block font-medium mb-2">Technologies</label>
-          <div class="grid grid-cols-2 gap-4">
-           <label class="flex items-center gap-2">
-              <input type="checkbox" name="technologies" value="Node.js" />
-              Node.js
-            </label>
-            <label class="flex items-center gap-2">
-              <input type="checkbox" name="technologies" value="bootstrap" />
-              Bootstrap
-            </label>
-            <label class="flex items-center gap-2">
-              <input type="checkbox" name="technologies" value="React.js" />
-              React.js
-            </label>
-            <label class="flex items-center gap-2">
-              <input type="checkbox" name="technologies" value="Laravel" />
-              Laravel
-            </label>
-            <label class="flex items-center gap-2">
-              <input type="checkbox" name="technologies" value="Express.js" />
-              Express.js
-            </label>
-            <label class="flex items-center gap-2">
-              <input type="checkbox" name="technologies" value="Tailwindcss" />
-              Tailwindcss
-            </label>
-            <label class="flex items-center gap-2">
-              <input type="checkbox" name="technologies" value="Php" />
-              PHP
-            </label>
-            <label class="flex items-center gap-2">
-              <input type="checkbox" name="technologies" value="PostgreSQL" />
-              PostgreSQL
-            </label>
-            <label class="flex items-center gap-2">
-              <input type="checkbox" name="technologies" value="Javascript" />
-              Javascript
-            </label>
+            <div class="form-group mb-4">
+              <label for="location" class="block font-medium mb-2">Nama Perusahaan</label>
+              <input
+                type="text"
+                id="location"
+                name="location"
+                required
+                class="w-full border bg-white shadow-xl rounded px-2 py-2 focus:ring-2 focus:ring-gray-500 outline-none"
+              />
+            </div>
+
+            <div class="form-group mb-4">
+              <label for="description" class="block font-medium mb-2">Description</label>
+              <textarea
+                id="description"
+                name="description"
+                rows="4"
+                required
+                placeholder="Describe your project..."
+                class="w-full border bg-white shadow-xl rounded px-2 py-2 focus:ring-2 focus:ring-gray-500 outline-none resize-none"
+              ></textarea>
+            </div>
+
+            <div class="flex flex-col md:flex-row gap-4">
+                <div class="form-group flex-1">
+                    <label for="startDate" class="block font-medium mb-2">Start Date</label>
+                    <input type="date" id="startDate" name="startDate" required
+                        class="w-full border border-white bg-white shadow-xl rounded px-2 py-2 focus:ring-2 focus:ring-gray-500 outline-none" />
+                </div>
+                <div class="form-group flex-1">
+                    <label for="endDate" class="block font-medium mb-2">End Date</label>
+                    <input type="date" id="endDate" name="endDate" required
+                        class="w-full border border-white bg-white shadow-xl rounded px-2 py-2 focus:ring-2 focus:ring-gray-500 outline-none" />
+                </div>
+            </div>
+
+            <div class="form-group mb-4">
+              <label class="block font-medium mb-2">Technologies</label>
+              <div class="grid grid-cols-2 gap-4">
+              <label class="flex items-center gap-2">
+                  <input type="checkbox" name="technologies" value="Node.js" />
+                  Node.js
+                </label>
+                <label class="flex items-center gap-2">
+                  <input type="checkbox" name="technologies" value="bootstrap" />
+                  Bootstrap
+                </label>
+                <label class="flex items-center gap-2">
+                  <input type="checkbox" name="technologies" value="React.js" />
+                  React.js
+                </label>
+                <label class="flex items-center gap-2">
+                  <input type="checkbox" name="technologies" value="Laravel" />
+                  Laravel
+                </label>
+                <label class="flex items-center gap-2">
+                  <input type="checkbox" name="technologies" value="Express.js" />
+                  Express.js
+                </label>
+                <label class="flex items-center gap-2">
+                  <input type="checkbox" name="technologies" value="Tailwindcss" />
+                  Tailwindcss
+                </label>
+                <label class="flex items-center gap-2">
+                  <input type="checkbox" name="technologies" value="Php" />
+                  PHP
+                </label>
+                <label class="flex items-center gap-2">
+                  <input type="checkbox" name="technologies" value="PostgreSQL" />
+                  PostgreSQL
+                </label>
+                <label class="flex items-center gap-2">
+                  <input type="checkbox" name="technologies" value="Javascript" />
+                  Javascript
+                </label>
+              </div>
+            </div>
+
+            <div class="form_group mb-6">
+            <label for="logo" class="block font-medium mb-2">Upload logo Perusahaan</label>
+            <input type="file" name="logo" id="logo" class="w-full border bg-white shadow-xl rounded px-2 py-2 focus::ring-2 focus:ring-gray-500 outline-none">
+            </div>
+
+            <div class="text-center flex justify-end">
+              <button
+                type="submit"
+                class="bg-gray-700 hover:bg-gray-400 text-white font-bold py-2 px-6 rounded transition">
+                Submit
+              </button>
           </div>
-        </div>
-
-        <div class="form_group mb-6">
-        <label for="logo" class="block font-medium mb-2">Upload logo Perusahaan</label>
-        <input type="file" name="logo" id="logo" class="w-full border bg-white shadow-xl rounded px-2 py-2 focus::ring-2 focus:ring-gray-500 outline-none">
-        </div>
-
-        <div class="text-center flex justify-end">
-          <button
-            type="submit"
-            class="bg-gray-700 hover:bg-gray-400 text-white font-bold py-2 px-6 rounded transition">
-            Submit
-          </button>
-      </div>
-      </form>
-    </div>
+          </form>
+       </div>
   </body>
 </html>

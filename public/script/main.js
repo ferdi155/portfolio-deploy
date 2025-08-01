@@ -109,5 +109,5 @@ window.addEventListener("load", function () {
   preloader.classList.add("opacity-0", "transition-opacity", "duration-500");
   setTimeout(() => {
     preloader.style.display = "none";
-  }, 500); // waktu fade-out
+  }, 500); 
 });

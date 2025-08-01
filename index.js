@@ -13,11 +13,10 @@ const app = express();
 
 
 const pool = new Pool({
-  user: process.env.DB_USER,
-  host: process.env.DB_HOST,
-  database: process.env.DB_NAME,
-  password: process.env.DB_PASSWORD,
-  port: process.env.DB_PORT,
+  connectionString: process.env.DATABASE_URL,
+  ssl: {
+    rejectUnauthorized: false,
+  },
 });
 
 const storage = multer.diskStorage({
@@ -109,7 +108,7 @@ app.post("/experience", upload.single("logo"), async (req, res) => {
 
 app.get("/", async (req, res) => {
   try {
-        const projectResult = await pool.query("SELECT * FROM form_project ORDER BY id DESC");
+    const projectResult = await pool.query("SELECT * FROM form_project ORDER BY id DESC");
     const projects = projectResult.rows.map((p) => ({
       ...p,
       technologies: typeof p.technologies === "string"
