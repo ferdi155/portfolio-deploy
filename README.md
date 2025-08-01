@@ -34,7 +34,8 @@ views/
    npm install
    ```
 
-2. **Konfigurasi Database**
+2. **Shcema Database**
+
    - Pastikan PostgreSQL berjalan.
    - Buat database `final_project` dan tabel:
      ```sql
@@ -62,7 +63,7 @@ views/
 3. **Jalankan Server**
 
     node index.js
-    
+
 
 4. **Akses Website**
    Buka [http://localhost:3000](http://localhost:3000) di browser.
