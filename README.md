@@ -61,9 +61,8 @@ views/
 
 3. **Jalankan Server**
 
-   nodemon index.js
-
-  
+    node index.js
+    
 
 4. **Akses Website**
    Buka [http://localhost:3000](http://localhost:3000) di browser.
