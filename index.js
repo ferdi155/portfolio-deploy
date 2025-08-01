@@ -8,8 +8,8 @@ import path from "path";
 import { engine } from "express-handlebars";
 
 const port = process.env.PORT ?? 8080;
-const { Pool } = pkg;
 const app = express();
+const { Pool } = pkg;
 
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
