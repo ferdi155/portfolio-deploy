@@ -11,6 +11,8 @@ const port = process.env.PORT ?? 8080;
 const app = express();
 const { Pool } = pkg;
 
+
+
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
   ssl: { rejectUnauthorized: false },
