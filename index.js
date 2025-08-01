@@ -1,26 +1,23 @@
-import dotenv from "dotenv";
-dotenv.config();
-
 import express from "express";
 import pkg from "pg";
 import multer from "multer";
 import path from "path";
 import { engine } from "express-handlebars";
+import dotenv from "dotenv";
 
-const port = process.env.PORT ?? 8080;
-const app = express();
 const { Pool } = pkg;
-
+const app = express();
+const port = process.env.PORT;
+dotenv.config();
 
 
 const pool = new Pool({
-  connectionString: process.env.DATABASE_URL,
-  ssl: { rejectUnauthorized: false },
+  user: process.env.DB_USER,
+  host: process.env.DB_HOST,
+  database: process.env.DB_NAME,
+  password: process.env.DB_PASSWORD,
+  port: process.env.DB_PORT,
 });
-
-console.log("DATABASE_URL:", process.env.DATABASE_URL);
-
-
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -49,7 +46,7 @@ app.use(express.json());
 app.use(express.static("public/image"));
 app.use(express.static("public/script"));
 app.use("/uploads", express.static("public/uploads"));
-  
+
 
 app.engine("handlebars", engine());
 app.set("view engine", "handlebars");
@@ -111,7 +108,7 @@ app.post("/experience", upload.single("logo"), async (req, res) => {
 
 app.get("/", async (req, res) => {
   try {
-    const projectResult = await pool.query("SELECT * FROM form_project ORDER BY id DESC");
+        const projectResult = await pool.query("SELECT * FROM form_project ORDER BY id DESC");
     const projects = projectResult.rows.map((p) => ({
       ...p,
       technologies: typeof p.technologies === "string"
