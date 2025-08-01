@@ -11,13 +11,14 @@ const port = process.env.PORT ?? 8080;
 const { Pool } = pkg;
 const app = express();
 
-
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
-  ssl: {
-    rejectUnauthorized: false,
-  },
+  ssl: { rejectUnauthorized: false },
 });
+
+console.log("DATABASE_URL:", process.env.DATABASE_URL);
+
+
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
