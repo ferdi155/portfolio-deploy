@@ -63,7 +63,7 @@ views/
 
    nodemon index.js
 
-   atau pm2 start index.js --myproject
+  
 
 4. **Akses Website**
    Buka [http://localhost:3000](http://localhost:3000) di browser.
