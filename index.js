@@ -12,11 +12,8 @@ dotenv.config();
 
 
 const pool = new Pool({
-  user: process.env.DB_USER,
-  host: process.env.DB_HOST,
-  database: process.env.DB_NAME,
-  password: process.env.DB_PASSWORD,
-  port: process.env.DB_PORT,
+  connectionString: process.env.DATABASE_URL,
+  ssl: { rejectUnauthorized: false } // penting untuk Railway
 });
 
 const storage = multer.diskStorage({
@@ -45,7 +42,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("public/image"));
 app.use(express.static("public/script"));
-app.use("/uploads", express.static("public/uploads"));
+app.use('/uploads', express.static(path.join(process.cwd(), 'public/uploads')));
+
 
 
 app.engine("handlebars", engine());
@@ -146,5 +144,5 @@ app.get("/", async (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log(`✅ Server berjalan di http://localhost:${port}`);
+  console.log(`Server running on http://localhost:${port}`);
 });
