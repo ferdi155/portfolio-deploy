@@ -16,6 +16,17 @@ const pool = new Pool({
   ssl: { rejectUnauthorized: false }
 });
 
+console.log("DATABASE_URL =>", process.env.DATABASE_URL);
+
+process.on("uncaughtException", err => {
+  console.error("Uncaught Exception:", err);
+});
+
+process.on("unhandledRejection", err => {
+  console.error("Unhandled Rejection:", err);
+});
+
+
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
     cb(null, "public/uploads");
