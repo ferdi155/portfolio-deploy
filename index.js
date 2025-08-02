@@ -93,7 +93,6 @@ app.post("/formProject", upload.single("image_url"), async (req, res) => {
     res.status(500).send("Gagal menyimpan project");
   }
 });
-
 async function ensureTables() {
   try {
     await pool.query(`
@@ -106,11 +105,27 @@ async function ensureTables() {
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
       );
     `);
-    console.log("✅ Tabel form_project sudah dicek / dibuat.");
+
+    await pool.query(`
+      CREATE TABLE IF NOT EXISTS experience (
+        id SERIAL PRIMARY KEY,
+        position TEXT NOT NULL,
+        location TEXT,
+        description TEXT,
+        start_date DATE,
+        end_date DATE,
+        technologies TEXT[],
+        logo TEXT,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+      );
+    `);
+
+    console.log("✅ Semua tabel berhasil dicek / dibuat.");
   } catch (error) {
     console.error("❌ Gagal membuat tabel:", error);
   }
 }
+
 
 await ensureTables(); // panggil sebelum app.listen
 
