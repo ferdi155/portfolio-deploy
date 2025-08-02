@@ -152,17 +152,16 @@ app.post("/experience", upload.single("logo"), async (req, res) => {
 
 app.get("/", async (req, res) => {
   try {
-    const projectResult = await pool.query(
-      "SELECT * FROM form_project ORDER BY id DESC"
-    );
+    const projectResult = await pool.query("SELECT * FROM form_project ORDER BY id DESC");
     const projects = projectResult.rows.map((p) => ({
       ...p,
-      technologies:
-        typeof p.technologies === "string"
-          ? p.technologies.replace(/[{}"]/g, "").split(",").filter(Boolean)
-          : p.technologies || [],
-      image_url: p.image_url || null, // gunakan URL Cloudinary langsung
+      technologies: typeof p.technologies === "string"
+        ? p.technologies.replace(/[{}"]/g, "").split(",").filter(Boolean)
+        : p.technologies || [],
+      image_url: p.image_url || null, // Cloudinary URL langsung
     }));
+
+    const expResult = await pool.query("SELECT * FROM experience ORDER BY id DESC"); // ✅ Tambahkan baris ini!
 
     const experiences = expResult.rows.map((exp) => {
       const start = new Date(exp.start_date).toLocaleDateString("id-ID", {
@@ -179,11 +178,10 @@ app.get("/", async (req, res) => {
         description: exp.description ? exp.description.split("\n") : [],
         start_date: start,
         end_date: end,
-        technologies:
-          typeof exp.technologies === "string"
-            ? exp.technologies.replace(/[{}"]/g, "").split(",").filter(Boolean)
-            : exp.technologies || [],
-        logo: exp.logo || "/default-logo.png", // gunakan URL Cloudinary langsung
+        technologies: typeof exp.technologies === "string"
+          ? exp.technologies.replace(/[{}"]/g, "").split(",").filter(Boolean)
+          : exp.technologies || [],
+        logo: exp.logo || "/default-logo.png", // Cloudinary URL langsung
       };
     });
 
@@ -192,11 +190,13 @@ app.get("/", async (req, res) => {
       projects,
       experiences,
     });
+
   } catch (err) {
     console.error("❌ Gagal load halaman utama:", err);
     res.status(500).send("Gagal menampilkan data");
   }
 });
+
 
 app.listen(port, () => {
   console.log(`Server running on http://localhost:${port}`);
