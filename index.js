@@ -90,7 +90,7 @@ async function ensureTables() {
         project_name TEXT NOT NULL,
         description TEXT,
         technologies TEXT[],
-        image TEXT,
+        image_url TEXT,
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
       );
     `);
@@ -114,6 +114,7 @@ async function ensureTables() {
     console.error("❌ Gagal membuat tabel:", error);
   }
 }
+
 
 await ensureTables(); // panggil sebelum app.listen
 
@@ -147,6 +148,16 @@ app.post("/experience", upload.single("logo"), async (req, res) => {
   } catch (err) {
     console.error("❌ Gagal simpan experience:", err);
     res.status(500).send("Gagal menyimpan experience");
+  }
+});
+
+app.get("/reset-table", async (req, res) => {
+  try {
+    await pool.query(`DROP TABLE IF EXISTS form_project;`);
+    res.send("✅ Tabel form_project berhasil dihapus.");
+  } catch (err) {
+    console.error("❌ Gagal hapus tabel:", err);
+    res.status(500).send("Gagal menghapus tabel");
   }
 });
 
