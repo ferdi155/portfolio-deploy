@@ -94,6 +94,26 @@ app.post("/formProject", upload.single("image_url"), async (req, res) => {
   }
 });
 
+async function ensureTables() {
+  try {
+    await pool.query(`
+      CREATE TABLE IF NOT EXISTS form_project (
+        id SERIAL PRIMARY KEY,
+        project_name TEXT NOT NULL,
+        description TEXT,
+        technologies TEXT[],
+        image TEXT,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+      );
+    `);
+    console.log("✅ Tabel form_project sudah dicek / dibuat.");
+  } catch (error) {
+    console.error("❌ Gagal membuat tabel:", error);
+  }
+}
+
+await ensureTables(); // panggil sebelum app.listen
+
 
 app.post("/experience", upload.single("logo"), async (req, res) => {
   try {
