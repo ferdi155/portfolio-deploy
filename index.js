@@ -1,6 +1,6 @@
-import dotenv from "dotenv";
-dotenv.config();
- 
+import { config } from "dotenv";
+config();
+
 import express from "express";
 import pkg from "pg";
 import multer from "multer";
