@@ -1,11 +1,11 @@
+import dotenv from "dotenv";
+dotenv.config();
+ 
 import express from "express";
 import pkg from "pg";
 import multer from "multer";
 import path from "path";
 import { engine } from "express-handlebars";
-import dotenv from "dotenv";
-
-dotenv.config(); 
 
 
 console.log("✅ DATABASE_URL dari .env:", process.env.DATABASE_URL);// ✅ HARUS di atas sebelum Pool digunakan
@@ -15,7 +15,6 @@ const app = express();
 const port = process.env.PORT;
 
 const pool = new Pool({
-  
   connectionString: process.env.DATABASE_URL,
   ssl: { rejectUnauthorized: false }
 });
