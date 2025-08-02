@@ -70,11 +70,11 @@ app.post("/formProject", upload.single("image_url"), async (req, res) => {
 
     const image_url = req.file.path;
 
-      await pool.query(
-        `INSERT INTO form_project (project_name, description, technologies, github, image_url)
+    await pool.query(
+      `INSERT INTO form_project (project_name, description, technologies, github, image_url)
         VALUES ($1, $2, $3, $4, $5)`,
-        [projectName, description, selectedTech, github, image_url]
-      );;
+      [projectName, description, selectedTech, github, image_url]
+    );
 
     res.redirect("/");
   } catch (err) {
@@ -85,15 +85,16 @@ app.post("/formProject", upload.single("image_url"), async (req, res) => {
 async function ensureTables() {
   try {
     await pool.query(`
-      CREATE TABLE IF NOT EXISTS form_project (
-        id SERIAL PRIMARY KEY,
-        project_name TEXT NOT NULL,
-        description TEXT,
-        technologies TEXT[],
-        image_url TEXT,
-        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-      );
-    `);
+  CREATE TABLE IF NOT EXISTS form_project (
+    id SERIAL PRIMARY KEY,
+    project_name TEXT NOT NULL,
+    description TEXT,
+    technologies TEXT[],
+    github TEXT,
+    image_url TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+  );
+`);
 
     await pool.query(`
       CREATE TABLE IF NOT EXISTS experience (
@@ -114,7 +115,6 @@ async function ensureTables() {
     console.error("❌ Gagal membuat tabel:", error);
   }
 }
-
 
 await ensureTables(); // panggil sebelum app.listen
 
@@ -151,28 +151,24 @@ app.post("/experience", upload.single("logo"), async (req, res) => {
   }
 });
 
-app.get("/reset-table", async (req, res) => {
-  try {
-    await pool.query(`DROP TABLE IF EXISTS form_project;`);
-    res.send("✅ Tabel form_project berhasil dihapus.");
-  } catch (err) {
-    console.error("❌ Gagal hapus tabel:", err);
-    res.status(500).send("Gagal menghapus tabel");
-  }
-});
 
 app.get("/", async (req, res) => {
   try {
-    const projectResult = await pool.query("SELECT * FROM form_project ORDER BY id DESC");
+    const projectResult = await pool.query(
+      "SELECT * FROM form_project ORDER BY id DESC"
+    );
     const projects = projectResult.rows.map((p) => ({
       ...p,
-      technologies: typeof p.technologies === "string"
-        ? p.technologies.replace(/[{}"]/g, "").split(",").filter(Boolean)
-        : p.technologies || [],
+      technologies:
+        typeof p.technologies === "string"
+          ? p.technologies.replace(/[{}"]/g, "").split(",").filter(Boolean)
+          : p.technologies || [],
       image_url: p.image_url || null, // Cloudinary URL langsung
     }));
 
-    const expResult = await pool.query("SELECT * FROM experience ORDER BY id DESC"); // ✅ Tambahkan baris ini!
+    const expResult = await pool.query(
+      "SELECT * FROM experience ORDER BY id DESC"
+    ); // ✅ Tambahkan baris ini!
 
     const experiences = expResult.rows.map((exp) => {
       const start = new Date(exp.start_date).toLocaleDateString("id-ID", {
@@ -189,9 +185,10 @@ app.get("/", async (req, res) => {
         description: exp.description ? exp.description.split("\n") : [],
         start_date: start,
         end_date: end,
-        technologies: typeof exp.technologies === "string"
-          ? exp.technologies.replace(/[{}"]/g, "").split(",").filter(Boolean)
-          : exp.technologies || [],
+        technologies:
+          typeof exp.technologies === "string"
+            ? exp.technologies.replace(/[{}"]/g, "").split(",").filter(Boolean)
+            : exp.technologies || [],
         logo: exp.logo || "/default-logo.png", // Cloudinary URL langsung
       };
     });
@@ -201,13 +198,11 @@ app.get("/", async (req, res) => {
       projects,
       experiences,
     });
-
   } catch (err) {
     console.error("❌ Gagal load halaman utama:", err);
     res.status(500).send("Gagal menampilkan data");
   }
 });
-
 
 app.listen(port, () => {
   console.log(`Server running on http://localhost:${port}`);
