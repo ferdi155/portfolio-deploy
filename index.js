@@ -6,7 +6,7 @@ import pkg from "pg";
 import multer from "multer";
 import { CloudinaryStorage } from "multer-storage-cloudinary";
 import cloudinary from "./cloudinary.js";
-import path from "path";
+// import path from "path";
 import { engine } from "express-handlebars";
 
 console.log("✅ DATABASE_URL dari .env:", process.env.DATABASE_URL); // ✅ HARUS di atas sebelum Pool digunakan
@@ -70,11 +70,11 @@ app.post("/formProject", upload.single("image_url"), async (req, res) => {
 
     const image_url = req.file.path;
 
-    await pool.query(
-      `INSERT INTO form_project (project_name, description, technologies, github, image_url)
-       VALUES ($1, $2, $3, $4, $5)`,
-      [projectName, description, selectedTech, github, image_url]
-    );
+      await pool.query(
+        `INSERT INTO form_project (project_name, description, technologies, github, image_url)
+        VALUES ($1, $2, $3, $4, $5)`,
+        [projectName, description, selectedTech, github, image_url]
+      );;
 
     res.redirect("/");
   } catch (err) {
