@@ -56,7 +56,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("public/image"));
 app.use(express.static("public/script"));
-app.use('/uploads', express.static(path.join(process.cwd(), 'public/uploads')));
+app.use('/uploads', express.static('public/uploads'));
 
 
 
